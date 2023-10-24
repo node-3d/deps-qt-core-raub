@@ -32,44 +32,44 @@ to such directories have to be compiled into the node-addon with `rpath` option.
 Adjust `binding.gyp`:
 
 ```javascript
-	'variables': {
-		'bin'         : '<!(node -p "require(\'addon-tools-raub\').bin")',
-		'qt_core_bin' : '<!(node -p "require(\'deps-qt-core-raub\').bin")',
-	},
-	...
-	'targets': [
-		{
-			'target_name': '...',
-			
-			'conditions': [
-				
-				['OS=="linux"', {
-					'libraries': [
-						"-Wl,-rpath,'$$ORIGIN'",
-						"-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-core-raub/<(bin)'",
-						"-Wl,-rpath,'$$ORIGIN/../../deps-qt-core-raub/<(bin)'",
-						'<(qt_core_bin)/libicui18n.so.56',
-						'<(qt_core_bin)/libicuuc.so.56',
-						'<(qt_core_bin)/libicudata.so.56',
-						'<(qt_core_bin)/libicuio.so.56',
-						'<(qt_core_bin)/libicule.so.56',
-						'<(qt_core_bin)/libicutu.so.56',
-						'<(qt_core_bin)/libQt5Core.so.5',
-						'<(qt_core_bin)/libQt5Network.so.5',
-						'<(qt_core_bin)/libQt5DBus.so.5',
-					],
-				}],
-				
-				['OS=="mac"', {
-					'libraries': [
-						'-Wl,-rpath,@loader_path',
-						'-Wl,-rpath,@loader_path/../node_modules/deps-qt-core-raub/<(bin)',
-						'-Wl,-rpath,@loader_path/../../deps-qt-core-raub/<(bin)',
-					],
-				}],
-				
-			],
-		},
+'variables': {
+  'bin': '<!(node -p "require(\'addon-tools-raub\').bin")',
+  'qt_core_bin': '<!(node -p "require(\'deps-qt-core-raub\').bin")',
+},
+...
+'targets': [
+  {
+    'target_name': '...',
+    
+    'conditions': [
+      
+      ['OS=="linux"', {
+        'libraries': [
+          "-Wl,-rpath,'$$ORIGIN'",
+          "-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-core-raub/<(bin)'",
+          "-Wl,-rpath,'$$ORIGIN/../../deps-qt-core-raub/<(bin)'",
+          '<(qt_core_bin)/libicui18n.so.56',
+          '<(qt_core_bin)/libicuuc.so.56',
+          '<(qt_core_bin)/libicudata.so.56',
+          '<(qt_core_bin)/libicuio.so.56',
+          '<(qt_core_bin)/libicule.so.56',
+          '<(qt_core_bin)/libicutu.so.56',
+          '<(qt_core_bin)/libQt5Core.so.5',
+          '<(qt_core_bin)/libQt5Network.so.5',
+          '<(qt_core_bin)/libQt5DBus.so.5',
+        ],
+      }],
+      
+      ['OS=="mac"', {
+        'libraries': [
+          '-Wl,-rpath,@loader_path',
+          '-Wl,-rpath,@loader_path/../node_modules/deps-qt-core-raub/<(bin)',
+          '-Wl,-rpath,@loader_path/../../deps-qt-core-raub/<(bin)',
+        ],
+      }],
+      
+    ],
+  },
 ```
 
 
