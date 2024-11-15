@@ -1,8 +1,8 @@
 {
 	"author": "Luis Blanco <luisblanco1337@gmail.com>",
 	"name": "deps-qt-core-raub",
-	"version": "3.0.0",
-	"description": "Qt Core dynamic libraries for dependent Node.js addons",
+	"version": "4.0.0",
+	"description": "Qt Core dynamic libraries for Node.js addons",
 	"license": "MIT",
 	"main": "index.js",
 	"keywords": [
@@ -28,30 +28,30 @@
 		"install.js",
 		"QT_LGPL",
 		"LICENSE",
-		"package.json",
-		"README.md"
+		"package.json"
 	],
 	"scripts": {
 		"postinstall": "node install",
 		"eslint": "eslint .",
-		"test": "node --test --watch .",
+		"test": "node --test --watch",
 		"test-ci": "node --test"
 	},
 	"engines": {
-		"node": ">=18.16.0",
-		"npm": ">=9.5.1"
+		"node": ">=22.9.0",
+		"npm": ">=10.8.3"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/node-3d/deps-qt-core-raub.git"
 	},
 	"dependencies": {
-		"addon-tools-raub": "^7.4.0"
+		"addon-tools-raub": "^9.0.0"
 	},
 	"devDependencies": {
-		"eslint-plugin-node": "^11.1.0",
-		"eslint": "^8.52.0",
-		"node-addon-api": "^7.0.0",
-		"typescript": "^5.2.2"
+		"@types/node": "^22.7.9",
+		"@eslint/js": "^9.13.0",
+		"eslint": "^9.13.0",
+		"node-addon-api": "^8.2.1",
+		"typescript": "^5.6.3"
 	}
 }
