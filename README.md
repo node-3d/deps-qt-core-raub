@@ -10,7 +10,7 @@ This is a part of [Node3D](https://github.com/node-3d) project.
 npm i -s deps-qt-core-raub
 ```
 
-This dependency package is distributing **Qt Core 5.13.0**
+This dependency package is distributing **Qt Core 6.8.0**
 binaries through **NPM** for **Node.js** addons.
 
 * Platforms (x64): Windows, Linux, MacOS ARM.
