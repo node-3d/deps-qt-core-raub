@@ -65,6 +65,11 @@ jobs:
           cache: 'true'
           cache-key-prefix: 'install-qt-${{ matrix.os }}'
 
+      - name: Get Package Version
+        id: package-version
+        shell: bash
+        run: node -p "'version='+require('./package').version" >> $GITHUB_OUTPUT
+
       - name: Locate Tmp Dir
         run: |
           QT_TMP0='${{ github.workspace }}'
