@@ -65,9 +65,14 @@ jobs:
           cache: 'true'
           cache-key-prefix: 'install-qt-${{ matrix.os }}'
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.9.0
+          cache: 'npm'
+
       - name: Get Package Version
         id: package-version
-        shell: bash
         run: node -p "'version='+require('./package').version" >> $GITHUB_OUTPUT
 
       - name: Locate Tmp Dir
