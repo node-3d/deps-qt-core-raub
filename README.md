@@ -13,8 +13,8 @@ npm i -s deps-qt-core-raub
 This dependency package is distributing **Qt Core 5.13.0**
 binaries through **NPM** for **Node.js** addons.
 
-* Platforms (x64): Windows, Linux, OSX.
-* Library: Qt.
+* Platforms (x64): Windows, Linux, MacOS ARM.
+* Libraries: Qt Core.
 * Linking: dynamic dll-type.
 
 
@@ -31,7 +31,7 @@ to such directories have to be compiled into the node-addon with `rpath` option.
 
 Adjust `binding.gyp`:
 
-```javascript
+```gyp
 'variables': {
   'bin': '<!(node -p "require(\'addon-tools-raub\').bin")',
   'qt_core_bin': '<!(node -p "require(\'deps-qt-core-raub\').bin")',
@@ -48,15 +48,15 @@ Adjust `binding.gyp`:
           "-Wl,-rpath,'$$ORIGIN'",
           "-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-core-raub/<(bin)'",
           "-Wl,-rpath,'$$ORIGIN/../../deps-qt-core-raub/<(bin)'",
-          '<(qt_core_bin)/libicui18n.so.56',
-          '<(qt_core_bin)/libicuuc.so.56',
-          '<(qt_core_bin)/libicudata.so.56',
-          '<(qt_core_bin)/libicuio.so.56',
-          '<(qt_core_bin)/libicule.so.56',
-          '<(qt_core_bin)/libicutu.so.56',
-          '<(qt_core_bin)/libQt5Core.so.5',
-          '<(qt_core_bin)/libQt5Network.so.5',
-          '<(qt_core_bin)/libQt5DBus.so.5',
+          '<(qt_core_bin)/libicui18n.so.73',
+          '<(qt_core_bin)/libicuuc.so.73',
+          '<(qt_core_bin)/libicudata.so.73',
+          '<(qt_core_bin)/libicuio.so.73',
+          '<(qt_core_bin)/libicule.so.73',
+          '<(qt_core_bin)/libicutu.so.73',
+          '<(qt_core_bin)/libQt6Core.so.6',
+          '<(qt_core_bin)/libQt6Network.so.6',
+          '<(qt_core_bin)/libQt6DBus.so.6',
         ],
       }],
       
@@ -82,15 +82,15 @@ Preload libraries:
 	
 	// ... inside some kind of init() function
 	#ifdef __linux__
-	dlopen("libicui18n.so.56", RTLD_LAZY);
-	dlopen("libicuuc.so.56", RTLD_LAZY);
-	dlopen("libicudata.so.56", RTLD_LAZY);
-	dlopen("libicuio.so.56", RTLD_LAZY);
-	dlopen("libicule.so.56", RTLD_LAZY);
-	dlopen("libicutu.so.56", RTLD_LAZY);
-	dlopen("libQt5Core.so.5", RTLD_LAZY);
-	dlopen("libQt5Network.so.5", RTLD_LAZY);
-	dlopen("libQt5DBus.so.5", RTLD_LAZY);
+	dlopen("libicui18n.so.73", RTLD_LAZY);
+	dlopen("libicuuc.so.73", RTLD_LAZY);
+	dlopen("libicudata.so.73", RTLD_LAZY);
+	dlopen("libicuio.so.73", RTLD_LAZY);
+	dlopen("libicule.so.73", RTLD_LAZY);
+	dlopen("libicutu.so.73", RTLD_LAZY);
+	dlopen("libQt6Core.so.6", RTLD_LAZY);
+	dlopen("libQt6Network.so.6", RTLD_LAZY);
+	dlopen("libQt6DBus.so.6", RTLD_LAZY);
 	#endif
 ```
 
@@ -99,20 +99,22 @@ Preload libraries:
 
 This software uses the [Qt library](https://www.qt.io/).
 Qt is legally used under the LGPLv3 (GNU Lesser General Public License) version.
-It is [explicitly stated](https://doc.qt.io/qt-5.13/licensing.html) that Qt can be used commercially under LGPLv3:
+It is [explicitly stated](https://www.qt.io/licensing/open-source-lgpl-obligations)
+that Qt Libraries can be used in a commercial closed-source app (if you wish):
 
-> Qt licensed under the GNU Lesser General Public License (LGPL) version 3 is
-appropriate for the development of Qt applications provided you can comply
-with the terms and conditions of the GNU LGPL version 3 (or GNU GPL version 3).
+> In case of dynamic linking, it is possible, but not mandatory,
+to keep application source code proprietary as long as it is
+“work that uses the library” – typically achieved
+via dynamic linking of the library.
 
-These **terms and conditions** allow using (unmodified) Qt as a shared library (DLL), in a closed-source project.
-To which this project fully complies.
+These **terms and conditions** allow using (unmodified) Qt as a
+shared library (DLL), in a closed-source project.
 
 Qt licensing information (a COPY) is given in a [separate file](/QT_LGPL),
 which also can be found on
-[Qt's official web-site](http://doc.qt.io/qt-5/lgpl.html).
+[Qt's official web-site](http://doc.qt.io/qt-6/lgpl.html).
 
-The binaries were ripped from installed copy of the framework.
+The binaries were extracted from installed copy of the framework.
 
 ---
 
