@@ -13,7 +13,7 @@ npm i -s deps-qt-core-raub
 This dependency package is distributing **Qt Core 6.8.0**
 binaries through **NPM** for **Node.js** addons.
 
-* Platforms (x64): Windows, Linux, MacOS ARM.
+* Platforms (x64): Windows, Linux, Linux ARM, MacOS ARM.
 * Libraries: Qt Core.
 * Linking: dynamic dll-type.
 
