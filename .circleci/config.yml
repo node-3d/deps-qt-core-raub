@@ -51,18 +51,6 @@ jobs:
             - aarch64.gz
             - pkg-version
 
-      - run: |
-          mkdir -p ~/bin_tmp
-          cp src/libqmlui.so ~/bin_tmp
-          cd ~/bin_tmp && tar -czf ../aarch64.gz *
-          mkdir -p ~/artifacts && mv ~/aarch64.gz ~/artifacts
-
-      - persist_to_workspace:
-          root: ~/artifacts
-          paths:
-            - aarch64.gz
-            - pkg-version
-
   upload-qt:
     docker:
       - image: cimg/go:1.23.1
