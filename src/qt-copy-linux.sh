@@ -3,6 +3,8 @@
 
 # Core
 cp $2/plugins/platforms/libqminimal.so $1/plugins/platforms/libqminimal.so
+chrpath -r '$$ORIGIN/../..' $1/plugins/platforms/libqminimal.so
+
 cp $2/lib/libQt6Core.so.6 $1/libQt6Core.so.6
 cp $2/lib/libQt6DBus.so.6 $1/libQt6DBus.so.6
 cp $2/lib/libQt6Network.so.6 $1/libQt6Network.so.6
